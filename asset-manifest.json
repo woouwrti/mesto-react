@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/static/css/main.3f1ca323.css",
-    "main.js": "/static/js/main.bc846d7e.js",
-    "static/js/787.5530211c.chunk.js": "/static/js/787.5530211c.chunk.js",
-    "static/media/Inter-Black.woff?v=3.19": "/static/media/Inter-Black.fd37f7e052bea1018058.woff",
-    "static/media/Inter-Medium.woff?v=3.19": "/static/media/Inter-Medium.7ddb89dcdb33dd761944.woff",
-    "static/media/Inter-Regular.woff?v=3.19": "/static/media/Inter-Regular.34ed58565339f4f3be40.woff",
-    "static/media/Inter-Black.woff2?v=3.19": "/static/media/Inter-Black.141c7af6ed109b318513.woff2",
-    "static/media/Inter-Medium.woff2?v=3.19": "/static/media/Inter-Medium.6db7e439cc4b0e5c0cd2.woff2",
-    "static/media/Inter-Regular.woff2?v=3.19": "/static/media/Inter-Regular.4c96ed73beaf6d1e6cc7.woff2",
-    "static/media/logo-mesto-russia-white.svg": "/static/media/logo-mesto-russia-white.1f1e95914acec5e332361dc22eb8f9b2.svg",
-    "static/media/buttom-logo-heart-white.svg": "/static/media/buttom-logo-heart-white.87ed371465c7a6a1cd01.svg",
-    "index.html": "/index.html",
-    "static/media/basket.svg": "/static/media/basket.823b0cf1b0b7e9cb7cad.svg",
-    "static/media/buttom-logo-heart-black.svg": "/static/media/buttom-logo-heart-black.fe17a515669479b1e649.svg",
-    "static/media/buttom-logo-pen.svg": "/static/media/buttom-logo-pen.8667ac4a523e8fc42e59.svg",
-    "static/media/avatar-editor.svg": "/static/media/avatar-editor.a086f758840ae814ecde.svg",
-    "static/media/buttom-logo-close-cross.svg": "/static/media/buttom-logo-close-cross.2ceb783afbab75916ddc.svg",
-    "static/media/buttom-logo-cross.svg": "/static/media/buttom-logo-cross.d86bb2edc2f6eadb96b7.svg",
-    "main.3f1ca323.css.map": "/static/css/main.3f1ca323.css.map",
-    "main.bc846d7e.js.map": "/static/js/main.bc846d7e.js.map",
-    "787.5530211c.chunk.js.map": "/static/js/787.5530211c.chunk.js.map"
+    "main.css": "/mesto-react/static/css/main.541ec79a.css",
+    "main.js": "/mesto-react/static/js/main.cd16fab1.js",
+    "static/js/787.5530211c.chunk.js": "/mesto-react/static/js/787.5530211c.chunk.js",
+    "static/media/Inter-Black.woff?v=3.19": "/mesto-react/static/media/Inter-Black.fd37f7e052bea1018058.woff",
+    "static/media/Inter-Medium.woff?v=3.19": "/mesto-react/static/media/Inter-Medium.7ddb89dcdb33dd761944.woff",
+    "static/media/Inter-Regular.woff?v=3.19": "/mesto-react/static/media/Inter-Regular.34ed58565339f4f3be40.woff",
+    "static/media/Inter-Black.woff2?v=3.19": "/mesto-react/static/media/Inter-Black.141c7af6ed109b318513.woff2",
+    "static/media/Inter-Medium.woff2?v=3.19": "/mesto-react/static/media/Inter-Medium.6db7e439cc4b0e5c0cd2.woff2",
+    "static/media/Inter-Regular.woff2?v=3.19": "/mesto-react/static/media/Inter-Regular.4c96ed73beaf6d1e6cc7.woff2",
+    "static/media/logo-mesto-russia-white.svg": "/mesto-react/static/media/logo-mesto-russia-white.1f1e95914acec5e332361dc22eb8f9b2.svg",
+    "static/media/buttom-logo-heart-white.svg": "/mesto-react/static/media/buttom-logo-heart-white.87ed371465c7a6a1cd01.svg",
+    "index.html": "/mesto-react/index.html",
+    "static/media/basket.svg": "/mesto-react/static/media/basket.823b0cf1b0b7e9cb7cad.svg",
+    "static/media/buttom-logo-heart-black.svg": "/mesto-react/static/media/buttom-logo-heart-black.fe17a515669479b1e649.svg",
+    "static/media/buttom-logo-pen.svg": "/mesto-react/static/media/buttom-logo-pen.8667ac4a523e8fc42e59.svg",
+    "static/media/avatar-editor.svg": "/mesto-react/static/media/avatar-editor.a086f758840ae814ecde.svg",
+    "static/media/buttom-logo-close-cross.svg": "/mesto-react/static/media/buttom-logo-close-cross.2ceb783afbab75916ddc.svg",
+    "static/media/buttom-logo-cross.svg": "/mesto-react/static/media/buttom-logo-cross.d86bb2edc2f6eadb96b7.svg",
+    "main.541ec79a.css.map": "/mesto-react/static/css/main.541ec79a.css.map",
+    "main.cd16fab1.js.map": "/mesto-react/static/js/main.cd16fab1.js.map",
+    "787.5530211c.chunk.js.map": "/mesto-react/static/js/787.5530211c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3f1ca323.css",
-    "static/js/main.bc846d7e.js"
+    "static/css/main.541ec79a.css",
+    "static/js/main.cd16fab1.js"
   ]
 }
