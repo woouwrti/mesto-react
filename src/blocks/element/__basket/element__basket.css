@@ -1,0 +1,31 @@
+.element__basket {
+  background-image: url(../../../images/basket.svg);
+  background-color: transparent;
+  border: 0;
+  height: 19px;
+  width: 18px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  transition: filter 0.1s ease-in-out;
+  cursor: pointer;
+
+  margin: 0;
+  padding: 0;
+
+}
+
+.element__basket:hover {
+  filter: brightness(0) saturate(100%) invert(76%) sepia(6%) saturate(9%) hue-rotate(359deg) brightness(80%) contrast(84%);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .element__basket {
+    transition: none;
+  }
+
+  .element__basket:hover {
+    opacity: 1;
+  }
+}

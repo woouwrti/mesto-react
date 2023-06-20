@@ -1,0 +1,13 @@
+.element__footer {
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 79px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  margin: 0;
+  padding: 0 21px;
+}

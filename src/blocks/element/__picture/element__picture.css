@@ -1,0 +1,29 @@
+.element__picture {
+  /* background-color: white; */
+  width: 282px;
+  height: 282px;
+  display: block;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-width: 0;
+
+  margin: 0;
+  padding: 0;
+
+  transition: opacity 0.15s ease-in-out;
+}
+
+.element__picture:hover {
+  opacity: 0.75;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .element__picture {
+    transition: none;
+  }
+
+  .element__picture:hover {
+    opacity: 1;
+  }
+}

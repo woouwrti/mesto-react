@@ -1,0 +1,9 @@
+.element {
+  position: relative;
+  border-radius: 10px;
+  width: 282px;
+  height: 361px;
+
+  margin: 0;
+  padding: 0;
+}

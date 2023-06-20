@@ -1,0 +1,27 @@
+.element__button {
+  background-image: url(../../../images/buttom-logo-heart-white.svg);
+  background-color: transparent;
+  border: 0;
+  height: 19px;
+  width: 22px;
+
+  transition: opacity 0.1s ease-in-out;
+  cursor: pointer;
+
+  margin: 0;
+  padding: 0;
+}
+
+.element__button:hover {
+  opacity: 0.5;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .element__button {
+    transition: none;
+  }
+
+  .element__button:hover {
+    opacity: 1;
+  }
+}
