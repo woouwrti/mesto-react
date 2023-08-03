@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 export default function PopupWithForm({
   name,
@@ -9,6 +9,7 @@ export default function PopupWithForm({
   children,
   onSubmit,
   isValid,
+  resetForm
 }) {
 
   React.useEffect(() => {
@@ -20,29 +21,36 @@ export default function PopupWithForm({
     }
   }, [isOpen])
 
-  function handleEscClose(evt) {
-    if (evt.key === 'Escape') {
-      onClose();
+  function handleEscClose(event) {
+    if (event.key === 'Escape') {
+      closePopupAndReset();
     }
   };
 
-  function mauseDawnClose(evt) {
-    if (evt.target.classList.contains("popup_opened")) {
-      onClose();
+  function mouseDownClose(event) {
+    if (event.target.classList.contains("popup_opened")) {
+      closePopupAndReset();
+    };
+  }
+
+  function closePopupAndReset() {
+    onClose()
+    if(resetForm){
+      resetForm();
     };
   }
 
   return (
     <div
       className={`popup ` + (isOpen && "popup_opened")}
-      onMouseDown={mauseDawnClose}
+      onMouseDown={mouseDownClose}
     >
       <div className="popup__container">
         <button
           className="popup__close-button"
           type="button"
           aria-label="Закрыть окно"
-          onClick={onClose}
+          onClick={closePopupAndReset}
         ></button>
         <h2 className="popup__title">{title}</h2>
         <form

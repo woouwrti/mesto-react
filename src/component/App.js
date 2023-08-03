@@ -16,6 +16,8 @@ import { apiConfig } from "../utils/apiConfig";
 const api = new Api(apiConfig);
 
 export default function App() {
+  document.title = 'Mesto';
+
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
     React.useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
@@ -120,8 +122,6 @@ export default function App() {
       .catch(console.error);
   }
 
-
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -148,7 +148,7 @@ export default function App() {
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
-          onUpdateUser={handleUpdateUser}
+          onUpdateUserData={handleUpdateUser}
         />
 
         <AddPlacePopup

@@ -1,37 +1,18 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
-import { validation, resetValidation } from "./validation";
+import { useFormAndValidation } from "../utils/validation";
 
 export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
-  const [name, setName] = React.useState("");
-  const [link, setLink] = React.useState("");
-  
-  const [isValid, setIsValid] = React.useState(false);
-
-  React.useEffect(() => {
-    setName("");
-    setLink("");
-    resetValidation("add-card")
-  }, [isOpen]);
-
-  function handleChangeName(event) {
-    const text = event.target.value;
-    setName(text);
-    validation(event, setIsValid);
-  }
-
-  function handleChangeLink(event) {
-    const text = event.target.value;
-    setLink(text);
-    validation(event, setIsValid);
-  }
+  const { values, handleChange, errors, isValid, resetForm } = useFormAndValidation()
 
   function handleSubmit(event) {
     event.preventDefault();
+
     onAddPlace({
-      name,
-      link,
+      name: values.name,
+      link: values.link,
     });
+    resetForm();
   }
 
   return (
@@ -43,6 +24,7 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
       onClose={onClose}
       onSubmit={handleSubmit}
       isValid={isValid}
+      resetForm={resetForm}
     >
       <label className="popup__input-field">
         <input
@@ -54,10 +36,10 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
           minLength="2"
           maxLength="30"
           required
-          value={name}
-          onChange={handleChangeName}
+          value={values.name || ''}
+          onChange={handleChange}
         />
-        <span className="popup__profile-line-error"></span>
+        <span className="popup__profile-line-error">{errors.name || ''}</span>
       </label>
       <label className="popup__input-field">
         <input
@@ -68,10 +50,10 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
           name="link"
           minLength="1"
           required
-          value={link}
-          onChange={handleChangeLink}
+          value={values.link || ''}
+          onChange={handleChange}
         />
-        <span className="popup__profile-line-error"></span>
+        <span className="popup__profile-line-error">{errors.link || ''}</span>
       </label>
     </PopupWithForm>
   );

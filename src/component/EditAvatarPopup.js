@@ -1,27 +1,36 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
-import { validation } from "./validation";
 
 export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
-  const [avatarLink, setAvatarLink] = React.useState("");
 
-  const [isValid, setIsValid] = React.useState(true);
+  const [isValid, setIsValid] = React.useState(false);
+  const [inputValidationMessage, setInputValidationMessage] = React.useState('');
 
-  React.useEffect(() => {
-    setAvatarLink("")
-  }, [isOpen]);
+  const inputRef = React.useRef();
 
   function handleSubmit(event) {
     event.preventDefault();
+
     onUpdateAvatar({
-      avatar: avatarLink,
+      avatar: inputRef.current.value,
     });
+    resetForm();
   }
 
-  function handleChangeLink(event) {
-    const text = event.target.value;
-    setAvatarLink(text);
-    validation(event, setIsValid);
+  function handleInput(event) {
+    if (event.target.validity.valid) {
+      setIsValid(true);
+      setInputValidationMessage('')
+    } else {
+      setIsValid(false);
+      setInputValidationMessage(event.target.validationMessage);
+    }
+  }
+
+  function resetForm() {
+    setIsValid(false);
+    setInputValidationMessage('');
+    inputRef.current.value = '';
   }
 
   return (
@@ -33,9 +42,11 @@ export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
       onClose={onClose}
       onSubmit={handleSubmit}
       isValid={isValid}
+      resetForm={resetForm}
     >
       <label className="popup__input-field">
         <input
+          ref={inputRef}
           type="url"
           className={"popup__profile-line " + (isValid && "popup__profile-line_invalid")}
           id="avatar-link-input"
@@ -43,10 +54,11 @@ export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
           name="link"
           minLength="1"
           required
-          onChange={handleChangeLink}
-          value={avatarLink}
+          onInput={handleInput}
         />
-        <span className="popup__profile-line-error"></span>
+        <span className="popup__profile-line-error">
+          {inputValidationMessage}
+        </span>
       </label>
     </PopupWithForm>
   );
