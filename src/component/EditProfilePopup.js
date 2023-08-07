@@ -11,7 +11,6 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUserData }) 
   React.useEffect(() => {
     if (Object.keys(currentUser).length !== 0) {
       setValues({ 'name': currentUser.name, 'desc': currentUser.about })
-      console.log(values)
       setIsValid(true)
     }
   }, [currentUser, isOpen]);

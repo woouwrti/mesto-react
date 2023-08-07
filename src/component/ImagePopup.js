@@ -20,7 +20,7 @@ export default function ImagePopup({
     };
   };
 
-  function mauseDawnClose(evt) {
+  function mouseDownClose(evt) {
     if (evt.target.classList.contains('popup_opened')) {
       onClose();
     };
@@ -29,7 +29,7 @@ export default function ImagePopup({
   return (
     <div
       className={`popup popup_dark-background ` + (card && "popup_opened")}
-      onMouseDown={mauseDawnClose}
+      onMouseDown={mouseDownClose}
     >
       <div className="popup__container-image">
         <button
