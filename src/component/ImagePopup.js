@@ -1,35 +1,16 @@
 import React from "react";
+import { usePopupClose } from '../hooks/usePopupClose'
 
 export default function ImagePopup({
   card,
   onClose
 }) {
 
-  React.useEffect(() => {
-    if (card) {
-      document.addEventListener('keydown', handleEscClose)
-    }
-    return () => {
-      document.removeEventListener('keydown', handleEscClose)
-    }
-  }, [card])
-
-  function handleEscClose(evt) {
-    if (evt.key === 'Escape') {
-      onClose();
-    };
-  };
-
-  function mouseDownClose(evt) {
-    if (evt.target.classList.contains('popup_opened')) {
-      onClose();
-    };
-  }
+  usePopupClose(card?.link, onClose)
 
   return (
     <div
       className={`popup popup_dark-background ` + (card && "popup_opened")}
-      onMouseDown={mouseDownClose}
     >
       <div className="popup__container-image">
         <button

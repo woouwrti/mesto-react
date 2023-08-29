@@ -1,8 +1,10 @@
 import React from "react";
-
+import AppContext from "../contexts/AppContext";
 import PopupWithForm from "./PopupWithForm";
 
 export default function ConfirmActionPopup({ isOpen, onClose, onConfirm }) {
+  const currentAppContext = React.useContext(AppContext);
+
   function handleSubmit(event) {
     event.preventDefault();
     onConfirm();
@@ -12,7 +14,7 @@ export default function ConfirmActionPopup({ isOpen, onClose, onConfirm }) {
     <PopupWithForm
       name="confirm"
       title="Вы уверены?"
-      buttonText="Да"
+      buttonText={currentAppContext.isLoading ? 'Выполнение...' : 'Да'}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}

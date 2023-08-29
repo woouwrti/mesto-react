@@ -1,8 +1,11 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
+import AppContext from "../contexts/AppContext";
 import { useFormAndValidation } from "../utils/validation";
 
 export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
+  const currentAppContext = React.useContext(AppContext);
+
   const { values, handleChange, errors, isValid, resetForm } = useFormAndValidation()
 
   function handleSubmit(event) {
@@ -12,14 +15,17 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
       name: values.name,
       link: values.link,
     });
-    resetForm();
   }
+
+  React.useEffect(() => {
+    resetForm();
+  }, [isOpen]);
 
   return (
     <PopupWithForm
       name="add-card"
       title="Новое место"
-      buttonText="Создать"
+      buttonText={currentAppContext.isLoading ? 'Создание...' : 'Создать'}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}

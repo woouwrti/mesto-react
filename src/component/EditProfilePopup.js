@@ -1,10 +1,12 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 import CurrentUserContext from "../contexts/CurrentUserContext";
+import AppContext from "../contexts/AppContext";
 import { useFormAndValidation } from "../utils/validation";
 
 export default function EditProfilePopup({ isOpen, onClose, onUpdateUserData }) {
   const currentUser = React.useContext(CurrentUserContext);
+  const currentAppContext = React.useContext(AppContext);
 
   const { values, handleChange, errors, isValid, setValues, setIsValid, resetForm } = useFormAndValidation();
 
@@ -28,7 +30,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUserData }) 
     <PopupWithForm
       name="edit-profile"
       title="Редактировать профиль"
-      buttonText="Сохранить"
+      buttonText={currentAppContext.isLoading ? 'Сохранение...' : 'Сохранить'}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}

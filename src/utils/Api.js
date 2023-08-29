@@ -13,20 +13,23 @@ export default class Api {
     }
   }
 
+  _request(url, options) {
+    return fetch(url, options).then(this._getResponseData)
+  }
+
   getUserInfo() {
     const url = `${this._baseUrl}/users/me`;
 
-    return fetch(url, {
+    return this._request(url, {
       method: 'GET',
       headers: this._headers,
     })
-      .then(res => this._getResponseData(res));
   }
 
   setUserInfo({ name, desc }) {
     const url = `${this._baseUrl}/users/me`;
 
-    return fetch(url, {
+    return this._request(url, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -34,36 +37,33 @@ export default class Api {
         about: desc
       })
     })
-      .then(res => this._getResponseData(res));
   }
 
   setAvatar(link) {
     const url = `${this._baseUrl}/users/me/avatar`;
 
-    return fetch(url, {
+    return this._request(url, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         avatar: link
       })
     })
-      .then(res => this._getResponseData(res));
   }
 
   getInitialCards() {
     const url = `${this._baseUrl}/cards`;
 
-    return fetch(url, {
+    return this._request(url, {
       method: 'GET',
       headers: this._headers,
     })
-      .then(res => this._getResponseData(res));
   }
 
   addNewCard({ name, link }) {
     const url = `${this._baseUrl}/cards`;
 
-    return fetch(url, {
+    return this._request(url, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -71,37 +71,33 @@ export default class Api {
         link
       })
     })
-      .then(res => this._getResponseData(res));
   }
 
   deleteCard(cardId) {
     const url = `${this._baseUrl}/cards/${cardId}`;
 
-    return fetch(url, {
+    return this._request(url, {
       method: 'DELETE',
       headers: this._headers
     })
-      .then(res => this._getResponseData(res));
   }
 
   _addLike(cardId) {
     const url = `${this._baseUrl}/cards/${cardId}/likes`;
 
-    return fetch(url, {
+    return this._request(url, {
       method: 'PUT',
       headers: this._headers
     })
-      .then(res => this._getResponseData(res));
   }
 
   _removeLike(cardId) {
     const url = `${this._baseUrl}/cards/${cardId}/likes`;
 
-    return fetch(url, {
+    return this._request(url, {
       method: 'DELETE',
       headers: this._headers
     })
-      .then(res => this._getResponseData(res));
   }
 
   toggleLike(cardId, isLiked) {

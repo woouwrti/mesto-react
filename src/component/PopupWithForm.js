@@ -1,4 +1,5 @@
 import React from 'react';
+import { usePopupClose } from '../hooks/usePopupClose'
 
 export default function PopupWithForm({
   name,
@@ -12,38 +13,18 @@ export default function PopupWithForm({
   resetForm
 }) {
 
-  React.useEffect(() => {
-    if (isOpen) {
-      document.addEventListener("keydown", handleEscClose)
-    }
-    return () => {
-      document.removeEventListener("keydown", handleEscClose)
-    }
-  }, [isOpen])
-
-  function handleEscClose(event) {
-    if (event.key === 'Escape') {
-      closePopupAndReset();
-    }
-  };
-
-  function mouseDownClose(event) {
-    if (event.target.classList.contains("popup_opened")) {
-      closePopupAndReset();
-    };
-  }
-
   function closePopupAndReset() {
     onClose()
-    if(resetForm){
+    if (resetForm) {
       resetForm();
     };
   }
 
+  usePopupClose(isOpen, closePopupAndReset)
+
   return (
     <div
       className={`popup ` + (isOpen && "popup_opened")}
-      onMouseDown={mouseDownClose}
     >
       <div className="popup__container">
         <button

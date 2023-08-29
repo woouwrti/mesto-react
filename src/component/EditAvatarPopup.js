@@ -1,43 +1,30 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
+import AppContext from "../contexts/AppContext";
+import { useFormAndValidation } from "../utils/validation";
 
 export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
+  const currentAppContext = React.useContext(AppContext);
 
-  const [isValid, setIsValid] = React.useState(false);
-  const [inputValidationMessage, setInputValidationMessage] = React.useState('');
-
-  const inputRef = React.useRef();
+  const { values, handleChange, errors, isValid, resetForm } = useFormAndValidation();
 
   function handleSubmit(event) {
     event.preventDefault();
 
     onUpdateAvatar({
-      avatar: inputRef.current.value,
+      avatar: values.avatar
     });
+  }
+
+  React.useEffect(() => {
     resetForm();
-  }
-
-  function handleInput(event) {
-    if (event.target.validity.valid) {
-      setIsValid(true);
-      setInputValidationMessage('')
-    } else {
-      setIsValid(false);
-      setInputValidationMessage(event.target.validationMessage);
-    }
-  }
-
-  function resetForm() {
-    setIsValid(false);
-    setInputValidationMessage('');
-    inputRef.current.value = '';
-  }
+  }, [isOpen]);
 
   return (
     <PopupWithForm
       name="change-avatar"
       title="Обновить аватар"
-      buttonText="Сохранить"
+      buttonText={currentAppContext.isLoading ? 'Сохранение...' : 'Сохранить'}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -46,18 +33,18 @@ export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
     >
       <label className="popup__input-field">
         <input
-          ref={inputRef}
           type="url"
           className={"popup__profile-line " + (isValid && "popup__profile-line_invalid")}
           id="avatar-link-input"
           placeholder="Ссылка на картинку"
-          name="link"
+          name="avatar"
           minLength="1"
           required
-          onInput={handleInput}
+          value={values.avatar || ''}
+          onInput={handleChange}
         />
         <span className="popup__profile-line-error">
-          {inputValidationMessage}
+          {errors.avatar || ''}
         </span>
       </label>
     </PopupWithForm>
